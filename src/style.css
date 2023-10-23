@@ -119,7 +119,7 @@ form button.search {
   display: grid;
   align-self: center;
   justify-items: start;
-  width: 20ch;
+  width: 24ch;
   grid-template-columns: auto 1fr;
 }
 
@@ -178,6 +178,15 @@ form button.search {
   animation: spin 2s linear infinite;
 }
 
+.temp-toggle {
+  font-size: medium;
+  font-weight: 500;
+  background-color: #a2d240;
+  align-self: center;
+  padding: var(--padding-y);
+  border-radius: 6px;
+  border: none;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);

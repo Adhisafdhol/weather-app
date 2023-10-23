@@ -7,6 +7,8 @@ function component() {
   const locationLabel = document.querySelector(".location-container label");
   const locationForm = document.querySelector("form#location-form");
   const content = document.querySelector("#content");
+  const tempToggleBtn = document.querySelector("button.temp-toggle");
+  let temp = "c";
   locationInput.addEventListener(
     "input",
     hideLabel.bind(this, locationLabel, locationInput),
@@ -23,6 +25,26 @@ function component() {
     content.removeChild(loader);
   }
 
+  function changeWeatherTemp() {
+    temp === "c" ? (temp = "f") : (temp = "c");
+  }
+
+  function getDegree() {
+    return temp === "c" ? "℃" : "℉";
+  }
+
+  function getFeelsTemp() {
+    return temp === "c" ? "feelslike_c" : "feelslike_f";
+  }
+
+  function getTemp() {
+    return temp === "c" ? "temp_c" : "temp_f";
+  }
+
+  function changeToggleBtnText() {
+    return temp === "c" ? "Change to Celcius" : "Change to Farenheit";
+  }
+
   function updateWeatherDom(data) {
     const city = document.querySelector(".weather-content .city");
     city.textContent = data.location.name;
@@ -37,13 +59,13 @@ function component() {
     );
     condition.textContent = data.current.condition.text;
     const temp = document.querySelector(".weather .temp .text");
-    temp.textContent = data.current.temp_c;
+    temp.textContent = data.current[getTemp()];
     const degree = document.querySelector(".weather .temp .degree");
-    degree.textContent = "℃";
+    degree.textContent = getDegree();
     const feelsTemp = document.querySelector(".weather .feels-like .text");
-    feelsTemp.textContent = ` ${data.current.feelslike_c}`;
+    feelsTemp.textContent = `${data.current[getFeelsTemp()]}`;
     const feelsDegree = document.querySelector(".weather .feels-like .degree");
-    feelsDegree.textContent = "℃";
+    feelsDegree.textContent = getDegree();
   }
 
   function checkWeatherData(data) {
@@ -78,6 +100,14 @@ function component() {
   locationForm.addEventListener("submit", getWeather.bind(this, locationInput));
 
   fetchWeather("berlin");
+
+  function toggleTemp() {
+    tempToggleBtn.textContent = changeToggleBtnText();
+    changeWeatherTemp();
+    fetchWeather(document.querySelector(".weather-content .city").textContent);
+  }
+
+  tempToggleBtn.addEventListener("click", toggleTemp);
 }
 
 component();
