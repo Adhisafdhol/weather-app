@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Aadheuss/weather-app.git"
+    "url": "git+https://github.com/Adhisafdhol/weather-app.git"
   },
   "keywords": [],
-  "author": "aadheuss",
+  "author": "Adhisafdhol",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Aadheuss/weather-app/issues"
+    "url": "https://github.com/Adhisafdhol/weather-app/issues"
   },
-  "homepage": "https://github.com/Aadheuss/weather-app#readme",
+  "homepage": "https://github.com/Adhisafdhol/weather-app#readme",
   "devDependencies": {
     "css-loader": "^6.8.1",
     "eslint": "^8.51.0",
